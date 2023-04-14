@@ -2,9 +2,11 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { BrowserRouter, Switch } from 'react-router-dom'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import ApolloProvider from './ApolloProvider'
 
-import './App.scss'
+import './App.css'
 
 import Home from './pages/home/Home'
 import Register from './pages/Register'
@@ -16,7 +18,7 @@ import DynamicRoute from './util/DynamicRoute'
 
 function App() {
   return (
-    <ApolloProvider>
+    <ApolloProvider client={client}>
       <AuthProvider>
         <MessageProvider>
           <BrowserRouter>

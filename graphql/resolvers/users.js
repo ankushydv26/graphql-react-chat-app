@@ -75,7 +75,7 @@ module.exports = {
           token,
         }
       } catch (err) {
-        console.log(err)
+        console.log('iii',err)
         throw err
       }
     },
