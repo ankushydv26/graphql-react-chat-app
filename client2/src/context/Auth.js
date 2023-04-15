@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from 'react'
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 
 const AuthStateContext = createContext()
 const AuthDispatchContext = createContext()
@@ -7,7 +7,7 @@ const AuthDispatchContext = createContext()
 let user = null
 const token = localStorage.getItem('token')
 if (token) {
-  const decodedToken = jwt_decode(token)
+  const decodedToken = jwtDecode(token)
   const expiresAt = new Date(decodedToken.exp * 1000)
 
   if (new Date() > expiresAt) {
@@ -36,7 +36,7 @@ const authReducer = (state, action) => {
   }
 }
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user })
 
   return (
@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
   )
 }
 
- const useAuthState = () => useContext(AuthStateContext)
- const useAuthDispatch = () => useContext(AuthDispatchContext)
+export const useAuthState = () => useContext(AuthStateContext)
+export const useAuthDispatch = () => useContext(AuthDispatchContext)
 
-export { AuthProvider , useAuthDispatch , useAuthState };
+//  { AuthProvider , useAuthDispatch , useAuthState };
