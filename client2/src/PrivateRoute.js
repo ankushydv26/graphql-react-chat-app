@@ -5,6 +5,7 @@ import { useAuthState } from "./context/Auth";
 
 const PrivateRoutes = (props) => {
   const { user } = useAuthState();
+  console.log( 'user',user)
 
   // if (props.authenticated && !user) {
   //   return <Redirect to="/login" />;
@@ -14,7 +15,8 @@ const PrivateRoutes = (props) => {
   //   return <Route component={props.component} {...props} />;
   // }
   return (
-    props.guest && user ? <Navigate to="/login" /> : <Outlet/> 
+    props.guest && user ?  <Outlet/>: <Navigate to="/login" />  
+    // if()
   )  
 };
 export default PrivateRoutes;
